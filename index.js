@@ -56,10 +56,10 @@ server.addService(mlServiceProto.MachineLearningService.service, {
 });
 
 server.bindAsync(
-  "0.0.0.0:50051",
+  "127.0.0.1:50051",
   grpc.ServerCredentials.createInsecure(),
   () => {
-    console.log("Server running at http://127.0.0.1:50051");
+    console.log("gRPC Server running at http://127.0.0.1:50051");
     server.start();
   }
 );

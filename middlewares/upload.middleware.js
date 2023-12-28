@@ -24,7 +24,7 @@ const uploadMiddleware = (req, res, next) => {
     const errors = [];
 
     files.forEach((file) => {
-      const allowedTypes = ["csv"];
+      const allowedTypes = ["text/csv"];
       const maxSize = 20 * 1024 * 1024; // 20MB
 
       if (!allowedTypes.includes(file.mimetype)) {
