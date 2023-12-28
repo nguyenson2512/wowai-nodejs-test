@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - grpc-server
+  grpc-server:
+    build:
+      context: .
+    ports:
+      - "50051:50051"

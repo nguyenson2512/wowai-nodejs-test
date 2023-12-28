@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+service MachineLearningService {
+  rpc StoreStatus (Token) returns (Status);
+  rpc UploadFile (UploadRequest) returns (UploadResponse);
+  rpc Predict (PredictRequest) returns (PredictResult);
+  rpc CreateDataset (CreateDatasetRequest) returns (CreateDatasetResult);
+  rpc Logs (LogsRequest) returns (LogsResult);
+}
+
+message Token {
+  string token = 1;
+}
+
+message Status {
+  string status = 1;
+}
+
+message UploadRequest {
+  repeated FileMetadata fileMetadata = 2;
+}
+
+message FileMetadata {
+  string fieldname = 1;
+  string originalname = 2;
+  string encoding = 3;
+  string mimetype = 4;
+  string destination = 5;
+  string filename = 6;
+  string path = 7;
+  int64 size = 8;
+}
+
+message UploadResponse {
+  string message = 1;
+}
+
+message PredictRequest {
+  Coordinate coordinate = 1;
+}
+
+message PredictResult {
+  string result = 1;
+}
+
+message Coordinate {
+  double x1 = 1;
+  double y1 = 2;
+  double x2 = 3;
+  double y2 = 4;
+}
+
+
+message CreateDatasetRequest {
+  repeated string examples = 1;
+}
+
+message CreateDatasetResult {
+  string result = 1;
+}
+
+message LogsRequest {
+  string startTime = 1;
+  string endTime = 2;
+}
+
+message LogsResult {
+  repeated string logEntries = 1;
+}
